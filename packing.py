@@ -51,4 +51,5 @@ def packingData():
         result.append(item_coin)
 
     return result
-print(packingData())
+for i in packingData():
+    print(i)
