@@ -1,3 +1,5 @@
+import os
+import sys
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import multiprocessing
@@ -15,15 +17,14 @@ def getPageNumberFromcoinmarketcal():
     return int(coin_maxpage.pop())
 
 
-def packingDataFromcoinmarketcal(page_number):
-    global result
-
+def packingDataFromcoinmarketcal(page_number, result):
+    proc = os.getpid()
     url = "https://coinmarketcal.com/en/" + "?page=" + str(page_number)
     html = urlopen(url)
 
-    # 사이트에 문제가 있으면 함수 종료
-    if html.status != 200:
-        return
+    # # 사이트에 문제가 있으면 함수 종료
+    # if html.status != 200:
+    #     return
     soup = BeautifulSoup(html, "html.parser")
 
     # 정보 -> 이름, 호재 시간, 추가된 시간, 제목, 상세내용
@@ -68,18 +69,25 @@ def packingDataFromcoinmarketcal(page_number):
             'title': coin_title,
             'detail': coin_detail
         }
-        one_page_data.append(item_coin)
-    result.append(one_page_data)
+        print(item_coin)
+        print(result)
+        result.append(item_coin)
 
 
 
 if __name__ == '__main__':
+    start_time = time.time()
     manager = multiprocessing.Manager()
     result = manager.list()
-    pool = multiprocessing.Pool(processes=8)
-    start_time = time.time()
-    max_page = getPageNumberFromcoinmarketcal()
-    pool.map(packingDataFromcoinmarketcal, range(1, max_page))
+    indxs = [i for i in range(1, getPageNumberFromcoinmarketcal() + 1)]
+    procs = []
 
+    for i, v in enumerate(indxs):
+        proc = multiprocessing.Process(target=packingDataFromcoinmarketcal, args=(v, result))
+        procs.append(proc)
+        proc.start()
+
+    for proc in procs:
+        proc.join()
     print(time.time() - start_time)
     print(result)
