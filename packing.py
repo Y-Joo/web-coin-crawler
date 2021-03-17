@@ -57,7 +57,7 @@ def packingDataFromcoinmarketcal(page_number, result):
         coin_addedtime[1] = str(month[coin_addedtime[1]])
         coin_addedtime.reverse()
         # 제목
-        coin_title = coin_title_data[i].string
+        coin_title = str(coin_title_data[i].string)
         # 상세내용
         coin_detail = ' '.join(coin_detail_data[i].string.split())
 
@@ -69,8 +69,6 @@ def packingDataFromcoinmarketcal(page_number, result):
             'title': coin_title,
             'detail': coin_detail
         }
-        print(item_coin)
-        print(result)
         result.append(item_coin)
 
 
