@@ -61,6 +61,11 @@ function makeElement(firstDate) {
         // 해당 칸에 날짜가 있으면 div엘리먼트 생성 후 해당 날짜 넣어주기
         let dateEl = document.createElement('div');
         dateEl.textContent = dateSet;
+        const newtext=document.createTextNode("AppendChild");
+        const newdiv=document.createElement('div');
+        newdiv.appendChild(newtext);
+        newdiv.style.color='blue';
+        dateEl.appendChild(newdiv);
         dateEl.setAttribute('class', dateSet);
         dateEl.setAttribute('id', `${today.format2()}-${dateSet}`);
         weeklyEl.appendChild(dateEl);
