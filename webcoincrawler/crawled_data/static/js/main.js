@@ -14,6 +14,13 @@ const bgblack = document.querySelector('.bgblack');
 const closedBtn = document.querySelector('.closed');
 let currentDate;
 
+function addnews(){
+  var news_date=document.getElementById("2021-3-1")
+  const new_text= document.createTextNode("Snapshot")
+  const newdiv=document.createElement('div')
+  newdiv.appendChild(new_text)
+  news_date.appendChild(newdiv)
+}
 
 buildCalendar();
 function buildCalendar() {
@@ -246,5 +253,5 @@ closedBtn.addEventListener('click', function(e){
 function save() {
   localStorage.setItem(currentDate, JSON.stringify(DATA[currentDate]));
 }
-
+addnews()
 }
