@@ -8,7 +8,7 @@ let currentDate;
 
 function addnews(){
   var news_date=document.getElementById("2021-3-1")
-  const new_text= document.createTextNode("Sia")
+  const new_text= document.createTextNode("Snapshot")
   const newdiv=document.createElement('div')
   newdiv.appendChild(new_text)
   news_date.appendChild(newdiv)
@@ -31,7 +31,6 @@ function buildCalendar() {
   makeElement(firstDate);
   showMain();
   currentDateget();
-  resetInsert();
 }
 
 function showMain() {
@@ -94,15 +93,11 @@ prevEl.addEventListener('click', function () {
   today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
   removeCalendar();
   buildCalendar();
-  resetInsert();
-  redrawLi()
 });
 nextEl.addEventListener('click', function () {
   today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
   removeCalendar();
   buildCalendar();
-  resetInsert();
-  redrawLi()
 });
 
 function currentDateget() {
@@ -122,7 +117,6 @@ calendarBody.addEventListener('click', function (e) {
   showMain();
   currentDateget();
 });
-
 
 function save() {
   localStorage.setItem(currentDate, JSON.stringify(DATA[currentDate]));
