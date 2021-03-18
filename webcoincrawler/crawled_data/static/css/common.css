@@ -43,48 +43,12 @@ header > h1 > span {color: #a7a7a7; font-size: 24px; font-weight: 400; vertical-
   margin: 0 20px;
 }
 
-/* content left */
-.content-left {
-  float: left;
-  box-sizing: border-box;
-  width: 20%;
-}
-.left-main {margin-top: 20%;}
-.left-main .main-wrap {
-  text-align: center;
-  font-weight: 700;
-}
-.left-main .main-wrap .main-day {
-  padding: 10% 0;
-  font-size: 30px;
-  color: #F594D3;
-}
-.left-main .main-wrap .main-date {
-  margin: 10% 0;
-  font-size: 80px;
-  color: rgb(255, 82, 195);
-}
-.left-main .todo-wrap {padding: 20% 0 10% 10%;}
-.left-main .todo-wrap .todo-title {
-  font-size: 40px;
-  font-weight: 600;
-  margin-bottom: 10%;
-  color: #5c5c5c;
-}
-.left-main .todo-wrap .input-form .input-box {
-  width: 90%;
-  height: 50px;
-  font-size: 20px;
-  border: 0;
-  border-bottom: 2px dashed rgb(255, 82, 195);
-  margin-bottom: 30px;
-  outline-style: none;
-}
+
 /* content right */
 .content-right {
-  float: right;
+  float: left;
   box-sizing: border-box;
-  width: 80%;
+  width: 100%;
 }
 .content-right .day-of-week {
   background: rgb(254, 194, 233);
