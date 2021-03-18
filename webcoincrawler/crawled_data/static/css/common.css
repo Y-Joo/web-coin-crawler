@@ -90,55 +90,7 @@ header > h1 > span {color: #a7a7a7; font-size: 24px; font-weight: 400; vertical-
 .calendar-body #weekly > div:first-child {border-left: 1px solid #e4e4e4;}
 .calendar-body #weekly > div:last-child {border-right: 1px solid #e4e4e4;}
 
-/* todoList */
-.todoList {
-  margin-top: 10%;
-  font-size: 20px;
-}
-.todoList > li {position: relative;}
-.todoList > li > span{
-  white-space: nowrap;
-  width: 70%;
-  overflow: hidden;
-  display: block;
-  text-overflow: ellipsis;
-}
-.todoList > li+li {
-  margin-top: 5%;
-}
-.todoList > li > .del-data{
-  position: absolute;
-  top: 0; right: 5%;
-  width: 20%;
-  height: 25px;
-  background: none;
-  border: none;
-  font-size: 0px;
-}
-.todoList > li > .del-data::after, .todoList > li > .del-data::before{
-  content: '';
-  position: absolute;
-  top:0; left: 50%;
-  display: block;
-  width: 4px;
-  height: 18px;
-  background: rgb(255, 82, 195);
-}
-.todoList > li > .del-data::after, .closed::after {transform: rotate(45deg);}
-.todoList > li > .del-data::before, .closed::before{transform: rotate(-45deg);}
-.showList {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgb(255, 38, 179);
-  width: 400px;
-  height: 300px;
-  z-index: 1;
-  border-radius: 20px;
-  overflow: hidden;
-}
+
 .closed {
   position: absolute;
   top: 5%; right: 5%;
