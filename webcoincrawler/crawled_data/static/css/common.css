@@ -1,134 +1,290 @@
 /* btn css */
 .clickBtn {
-  width: 70px;
-  height: 35px;
-  border-radius: 10%;
-  font-size: 15px;
-  font-weight: 600;
-  border: none;
-  background: rgb(255, 177, 228);
-  margin-right: 30px;
+    width: 70px;
+    height: 35px;
+    border-radius: 10%;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    background: rgb(255, 177, 228);
+    margin-right: 30px;
 }
 
 /* header */
 header {
-  border-bottom: 1px solid #e4e4e4;
-  display: flex;
-  padding: 10px;
-  height: 7%;
-  box-sizing: border-box;
-}
-header > h1 {
-  display: inline-block;
-  height: 100%;
-  flex-grow: 1;
-}
-.fa-calendar-check {color: #fa709a; margin-right: 2%; vertical-align: middle;}
-header > h1 > span {color: #a7a7a7; font-size: 24px; font-weight: 400; vertical-align: bottom;}
-.calendar_title { margin: 0 auto; flex-grow: 1;}
-.calendar_title .prev , .next{
-  width: 30px;
-  height: 100%;
-  cursor: pointer;
-  border: none;
-  font-size: 20px;
-  outline: none;
-  color: #5c5c5c;
-}
-.calendar_title .current-year-month {
-  font-size: 24px;
-  vertical-align: middle;
-  color: rgb(255, 82, 195);
-  display: inline-block;
-  margin: 0 20px;
+    border-bottom: 1px solid #e4e4e4;
+    display: flex;
+    padding: 10px;
+    height: 7%;
+    box-sizing: border-box;
 }
 
+header > h1 {
+    display: inline-block;
+    height: 100%;
+    flex-grow: 1;
+}
+
+.fa-calendar-check {
+    color: #fa709a;
+    margin-right: 2%;
+    vertical-align: middle;
+}
+
+header > h1 > span {
+    color: #a7a7a7;
+    font-size: 24px;
+    font-weight: 400;
+    vertical-align: bottom;
+}
+
+.calendar_title {
+    margin: 0 auto;
+    flex-grow: 1;
+}
+
+.calendar_title .prev, .next {
+    width: 30px;
+    height: 100%;
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+    outline: none;
+    color: #5c5c5c;
+}
+
+.calendar_title .current-year-month {
+    font-size: 24px;
+    vertical-align: middle;
+    color: rgb(255, 82, 195);
+    display: inline-block;
+    margin: 0 20px;
+}
+
+/* content left */
+.content-left {
+    float: left;
+    box-sizing: border-box;
+    width: 20%;
+}
+
+.left-main {
+    margin-top: 20%;
+}
+
+.left-main .main-wrap {
+    text-align: center;
+    font-weight: 700;
+}
+
+.left-main .main-wrap .main-day {
+    padding: 10% 0;
+    font-size: 30px;
+    color: #F594D3;
+}
+
+.left-main .main-wrap .main-date {
+    margin: 10% 0;
+    font-size: 80px;
+    color: rgb(255, 82, 195);
+}
+
+.left-main .todo-wrap {
+    padding: 20% 0 10% 10%;
+}
+
+.left-main .todo-wrap .todo-title {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 10%;
+    color: #5c5c5c;
+}
+
+.left-main .todo-wrap .input-form .input-box {
+    width: 90%;
+    height: 50px;
+    font-size: 20px;
+    border: 0;
+    border-bottom: 2px dashed rgb(255, 82, 195);
+    margin-bottom: 30px;
+    outline-style: none;
+}
 
 /* content right */
 .content-right {
-  float: left;
-  box-sizing: border-box;
-  width: 100%;
+    float: right;
+    box-sizing: border-box;
+    width: 80%;
 }
+
 .content-right .day-of-week {
-  background: rgb(254, 194, 233);
-  width: 100%;
-  height: 100%;
+    background: rgb(254, 194, 233);
+    width: 100%;
+    height: 100%;
 }
+
 .content-right .day-of-week .dayHeader {
-  display: inline-block;
-  width: calc(100% / 7.2);
-  height: 100%;
-  text-align: center;
-  padding: 1%;
-  box-sizing: border-box;
-  font-weight: 600;
-  font-size: 18px;
+    display: inline-block;
+    width: calc(100% / 7.2);
+    height: 100%;
+    text-align: center;
+    padding: 1%;
+    box-sizing: border-box;
+    font-weight: 600;
+    font-size: 18px;
 }
-.content-right .day-of-week .dayHeader.sun {color: #f02f2f;}
-.content-right .day-of-week .dayHeader.sat {color: #2208e7;}
+
+.content-right .day-of-week .dayHeader.sun {
+    color: #f02f2f;
+}
+
+.content-right .day-of-week .dayHeader.sat {
+    color: #2208e7;
+}
 
 /* calendar body  */
 #weekly > div {
-  box-sizing: border-box;
-  text-align: center;
-  width: calc(100% / 7);
-  height: 130px;
-  display: inline-block;
-  border-bottom: 1px solid #e4e4e4;
-  vertical-align: top;
-  padding: 1%;
-  color: rgb(255, 0, 166);
-  overflow-y: auto;
+    box-sizing: border-box;
+    text-align: center;
+    width: calc(100% / 7);
+    height: 130px;
+    display: inline-block;
+    border-bottom: 1px solid #e4e4e4;
+    vertical-align: top;
+    padding: 1%;
+    color: rgb(255, 0, 166);
+    overflow-y: auto;
 }
-#weekly > div.active {
-  background: #e4e4e4;
-}
-#weekly > div + div{
-  border-left: 1px solid #e4e4e4;
-}
-.calendar-body #weekly > div:first-child {border-left: 1px solid #e4e4e4;}
-.calendar-body #weekly > div:last-child {border-right: 1px solid #e4e4e4;}
 
+#weekly > div.active {
+    background: #e4e4e4;
+}
+
+#weekly > div + div {
+    border-left: 1px solid #e4e4e4;
+}
+
+.calendar-body #weekly > div:first-child {
+    border-left: 1px solid #e4e4e4;
+}
+
+.calendar-body #weekly > div:last-child {
+    border-right: 1px solid #e4e4e4;
+}
+
+/* todoList */
+.todoList {
+    margin-top: 10%;
+    font-size: 20px;
+}
+
+.todoList > li {
+    position: relative;
+}
+
+.todoList > li > span {
+    white-space: nowrap;
+    width: 70%;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+}
+
+.todoList > li + li {
+    margin-top: 5%;
+}
+
+.todoList > li > .del-data {
+    position: absolute;
+    top: 0;
+    right: 5%;
+    width: 20%;
+    height: 25px;
+    background: none;
+    border: none;
+    font-size: 0px;
+}
+
+.todoList > li > .del-data::after, .todoList > li > .del-data::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: block;
+    width: 4px;
+    height: 18px;
+    background: rgb(255, 82, 195);
+}
+
+.todoList > li > .del-data::after, .closed::after {
+    transform: rotate(45deg);
+}
+
+.todoList > li > .del-data::before, .closed::before {
+    transform: rotate(-45deg);
+}
+
+.showList {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(255, 38, 179);
+    width: 400px;
+    height: 300px;
+    z-index: 1;
+    border-radius: 20px;
+    overflow: hidden;
+}
 
 .closed {
-  position: absolute;
-  top: 5%; right: 5%;
-  width: 40px;
-  height: 40px;
-  font-size: 0;
-  background: none;
-  border: none;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 40px;
+    height: 40px;
+    font-size: 0;
+    background: none;
+    border: none;
 }
+
 .closed::after, .closed::before {
-  content: '';
-  position: absolute;
-  top: 14%; right: 44%;
-  width: 3px;
-  height: 25px;
-  background: #fff;
+    content: '';
+    position: absolute;
+    top: 14%;
+    right: 44%;
+    width: 3px;
+    height: 25px;
+    background: #fff;
 }
+
 .listText {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  word-break:break-all;
-  width: 70%;
-  font-size: 20px;
-  color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    word-break: break-all;
+    width: 70%;
+    font-size: 20px;
+    color: #fff;
 }
+
 .createDate {
-  position: absolute;
-  bottom: 7%;
-  right: 7%;
-  font-size: 20px;
-  color: #e4e4e4;
+    position: absolute;
+    bottom: 7%;
+    right: 7%;
+    font-size: 20px;
+    color: #e4e4e4;
 }
+
 .bgblack {
-  display: none;
-  background: #acacac;
-  opacity: 0.6;
-  position: absolute;
-  left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    background: #acacac;
+    opacity: 0.6;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
