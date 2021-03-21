@@ -6,7 +6,7 @@ var coindict={
       ],
       "goodnewstime": [
          "2021",
-         "3",
+         "4",
          "19"
       ],
       "addedtime": [
@@ -23,8 +23,8 @@ var coindict={
          "ATOM"
       ],
       "goodnewstime": [
-         "2021",
-         "3",
+         "2022",
+         "5",
          "20"
       ],
       "addedtime": [
