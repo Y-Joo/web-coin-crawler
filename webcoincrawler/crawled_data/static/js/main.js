@@ -4,6 +4,7 @@ window.onload = function () {
     const calendarBody = document.querySelector('.calendar-body');
     const prevEl = document.querySelector('.prev');
     const nextEl = document.querySelector('.next');
+    const detail= document.querySelector('.detail');
     let currentDate;
 
     buildCalendar();
@@ -13,14 +14,15 @@ window.onload = function () {
         var news_date = document.getElementById(id);
         const new_text = document.createTextNode(coin_name);
         const newdiv = document.createElement('div');
+        newdiv.setAttribute('class', 'coin_name');
         const coin_title=coindict[key]["title"];
         const coin_detail=coindict[key]["detail"];
         newdiv.addEventListener('click', function(){
-            win=window.open("", "startpop", "top=100, left=400, width=800, height=500, scrollbars=no, resizable=no ,status=no ,toolbar=no");
-            win.document.write(coin_title,'<br>',coin_detail)
+            detail.innerHTML=coin_title+'<br>'+'<br>'+coin_detail;
+            detail.style.display='block';
         })
         newdiv.appendChild(new_text);
-        newdiv.style.color = 'blue';
+        newdiv.style.color = 'black';
         news_date.appendChild(newdiv);
     }
 
@@ -56,7 +58,7 @@ window.onload = function () {
         for (let i = 0; i < pageYear[firstDate.getMonth()]; i++) {
             let dateEl = document.createElement('div');
             dateEl.textContent = dateSet;
-            dateEl.setAttribute('class', dateSet);
+            dateEl.setAttribute('class', 'dateSet');
             dateEl.setAttribute('id', `${today.format2()}-${dateSet}`);
             dateSet++;
             calendarBody.appendChild(dateEl);

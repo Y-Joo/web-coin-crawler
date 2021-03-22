@@ -87,5 +87,18 @@
     <section class="content-right">
         <div class="calendar-body"></div>
     </section>
+
+    <div class="detail" style="display: none">detail</div>
+
 </body>
 </html>
+<script>
+    detail=document.querySelector('.detail');
+    $('html').click(function(e) {
+    if(!$(e.target).hasClass('detail') && !$(e.target).hasClass('coin_name')) {
+        detail.style.display='none';
+    }
+    });
+</script>
+
+
