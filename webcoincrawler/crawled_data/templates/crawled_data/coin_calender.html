@@ -10,6 +10,65 @@
     <script src="Test.js" type="text/javascript"></script>
     <script src="main.js" type="text/javascript"></script>
     <script src="data.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.6.1.min.js"></script>
+	<script type="text/javascript">
+
+		var dragFlag = false;
+		var x, y, pre_x, pre_y;
+
+
+		$(function () {
+			$('.content-right').mousedown(
+				function (e) {
+					dragFlag = true;
+					var obj = $(this);
+					x = obj.scrollLeft();
+					y = obj.scrollTop();
+
+					pre_x = e.screenX;
+					pre_y = e.screenY;
+
+					$(this).css("cursor", "pointer");
+
+				}
+			);
+
+
+			$('.content-right').mousemove(
+				function (e) {
+					if (dragFlag) {
+						var obj = $(this);
+						obj.scrollLeft(x - e.screenX + pre_x);
+						obj.scrollTop(y - e.screenY + pre_y);
+                        return false;
+					}
+
+				}
+			);
+
+			$('.content-right').mouseup(
+				function () {
+					dragFlag = false;
+					$(this).css("cursor", "default");
+				}
+
+
+			);
+
+			$('body').mouseup(
+				function () {
+					dragFlag = false;
+					$('#result').text(dragFlag);
+					$(this).css("cursor", "default");
+				}
+
+
+			);
+
+
+		});
+
+	</script>
     <title>Calendar</title>
 </head>
 <body>

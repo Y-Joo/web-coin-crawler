@@ -6,20 +6,28 @@ window.onload = function () {
     const nextEl = document.querySelector('.next');
     let currentDate;
 
-
     buildCalendar();
-    function addnews(id, coin_name) {
+
+
+    function addnews(key, id, coin_name) {
         var news_date = document.getElementById(id);
         const new_text = document.createTextNode(coin_name);
         const newdiv = document.createElement('div');
+        const coin_title=coindict[key]["title"];
+        const coin_detail=coindict[key]["detail"];
+        newdiv.addEventListener('click', function(){
+            win=window.open("", "startpop", "top=100, left=400, width=800, height=500, scrollbars=no, resizable=no ,status=no ,toolbar=no");
+            win.document.write(coin_title,'<br>',coin_detail)
+        })
         newdiv.appendChild(new_text);
-        newdiv.style.color='blue';
+        newdiv.style.color = 'blue';
         news_date.appendChild(newdiv);
     }
+
     function buildCalendar() {
         let firstDate = new Date(today.getFullYear(), today.getMonth(), 1);
         var tyear = firstDate.getFullYear()
-        var tmonth = firstDate.getMonth()+1
+        var tmonth = firstDate.getMonth() + 1
         const monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         const leapYear = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
         const notLeapYear = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -33,10 +41,10 @@ window.onload = function () {
         headerYear.innerHTML = `${monthList[firstDate.getMonth()]}&nbsp;&nbsp;&nbsp;&nbsp;${today.getFullYear()}`;
         makeElement(firstDate);
         for (var key in coindict) {
-            if (coindict[key]["goodnewstime"][0] == tyear && coindict[key]["goodnewstime"][1] == tmonth){
-                var newid=coindict[key]["goodnewstime"].join('-');
-                var newtext=coindict[key]["name"][1];
-                addnews(newid, newtext);
+            if (coindict[key]["goodnewstime"][0] == tyear && coindict[key]["goodnewstime"][1] == tmonth) {
+                var newid = coindict[key]["goodnewstime"].join('-');
+                var newtext = coindict[key]["name"][1];
+                addnews(key, newid, newtext);
             }
         }
         currentDateget();
@@ -64,7 +72,6 @@ window.onload = function () {
 
 // 왼쪽에 현재 날짜 업데이트 해주기.
 
-
     prevEl.addEventListener('click', function () {
         today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
         removeCalendar();
@@ -75,6 +82,7 @@ window.onload = function () {
         removeCalendar();
         buildCalendar();
     });
+
 
     function currentDateget() {
         // format()을 이용해서 현재 날짜를 보기좋게 출력해주기 위해 사용.

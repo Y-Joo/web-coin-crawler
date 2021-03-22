@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'NanumBarunGothic';
+    src: url('/fonts/NanumBarunGothic.eot');
+    src: url('/fonts/NanumBarunGothic.eot') format('embedded-opentype'),
+    url('/fonts/NanumBarunGothic.woff') format('woff');
+}
 /* btn css */
 .clickBtn {
     width: 70px;
@@ -12,7 +18,6 @@
 
 /* header */
 header {
-    border-bottom: 1px solid #e4e4e4;
     display: flex;
     padding: 10px;
     height: 7%;
@@ -59,8 +64,10 @@ header > h1 > span {
     color: rgb(255, 82, 195);
     display: inline-block;
     margin: 0 20px;
+    font-family: gulim;
 }
 
+body {font-family: 'NanumBarunGothic', 'serif';}
 
 /* content right */
 .content-right {
@@ -68,7 +75,7 @@ header > h1 > span {
     box-sizing: border-box;
     width: 100%;
     white-space:nowrap;
-    overflow-x: auto;
+    overflow-x: hidden;
 }
 
 /* calendar body  */
@@ -76,16 +83,24 @@ header > h1 > span {
     box-sizing: border-box;
     text-align: center;
     width: 200px;
-    height: 500px;
+    height: auto;
+    max-height: 500px;
     display: inline-block;
     border-bottom: 1px solid #e4e4e4;
+    border-top: 1px solid #e4e4e4;
     vertical-align: top;
     padding: 1%;
     color: rgb(255, 0, 166);
     overflow-y: auto;
+    border-left: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    border-radius: 20px;
+    margin-left: 10px;
 }
 
 .calendar-body > div + div {
     border-left: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    border-radius: 20px;
+    margin-left: 10px;
 }
-
