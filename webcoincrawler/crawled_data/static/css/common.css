@@ -1,3 +1,6 @@
+html{
+    scroll-behavior: smooth;
+}
 /* btn css */
 .clickBtn {
     width: 70px;
@@ -12,6 +15,7 @@
 
 /* header */
 header {
+    background-color: white;
     display: flex;
     padding: 10px;
     height: 7%;
@@ -60,16 +64,29 @@ header > h1 > span {
     margin: 0 20px;
 }
 
-
+body{
+    background-color: royalblue;
+}
 
 /* content right */
 .content-right {
     float: right;
     box-sizing: border-box;
     width: 100%;
+    height:680px;
     white-space: nowrap;
-    overflow-x: hidden;
+    overflow-x: auto;
     background-color: royalblue;
+}
+.content-right::-webkit-scrollbar{
+    height: 10px;
+  }
+.content-right::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 30px;
+}
+.content-right::-webkit-scrollbar-track {
+    display:none;
 }
 
 /* calendar body  */
@@ -137,4 +154,14 @@ header > h1 > span {
 }
 .coin_name:first-child{
     padding-top: 5px;
+}
+.coin_name {
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0;
+  background-position: 0 88%;
+  transition: background-size 0.25s ease-in;
+}
+.coin_name:hover{
+  background-size: 100% 100%;
 }

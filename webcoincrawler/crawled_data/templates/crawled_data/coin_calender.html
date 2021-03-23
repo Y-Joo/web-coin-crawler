@@ -14,12 +14,15 @@
 	<script type="text/javascript">
 
 		var dragFlag = false;
-		var x, y, pre_x, pre_y;
+		var x, y, pre_x, pre_y, sec, secpre;
 
 
 		$(function () {
 			$('.content-right').mousedown(
 				function (e) {
+				    now=new Date();
+				    secpre=now.getSeconds();
+
 					dragFlag = true;
 					var obj = $(this);
 					x = obj.scrollLeft();
@@ -75,7 +78,7 @@
     <header>
         <h1>
             <i class="far fa-calendar-check"></i>
-            <span>캘린더</span>
+            <span>COHO-CALENDAR</span>
         </h1>
         <div class="calendar_title">
             <button class="prev">&#60;</button>
