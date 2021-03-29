@@ -1,3 +1,4 @@
+import json
 import os
 import sys
 from urllib.request import urlopen
@@ -8,6 +9,7 @@ import re
 
 month = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11,
          'Dec': 12}
+
 
 def getPageNumberFromcoinmarketcal():
     html = urlopen("https://coinmarketcal.com/en/")
@@ -28,12 +30,11 @@ def packingDataFromcoinmarketcal(page_number, result):
     soup = BeautifulSoup(html, "html.parser")
 
     # 정보 -> 이름, 호재 시간, 추가된 시간, 제목, 상세내용
-    coin_name_data = soup.select(
-        "article.col-xl-3.col-lg-4.col-md-6.py-3 > div.card.text-center > div.card__body > h5.card__coins > a.link-detail")
+    coin_key_data = soup.select("article.col-xl-3.col-lg-4.col-md-6.py-3 > div.card.text-center > div.card__body > a.link-detail")
+    coin_name_data = soup.select("article.col-xl-3.col-lg-4.col-md-6.py-3 > div.card.text-center > div.card__body > h5.card__coins > a.link-detail")
     coin_goodnewstime_data = soup.select("h5[class = 'card__date mt-0']")
     coin_addedtime_data = soup.select("p[class = 'added-date']")
-    coin_title_data = soup.select(
-        "article.col-xl-3.col-lg-4.col-md-6.py-3 > div.card.text-center > div.card__body > a.link-detail > h5.card__title.mb-0.ellipsis")
+    coin_title_data = soup.select("article.col-xl-3.col-lg-4.col-md-6.py-3 > div.card.text-center > div.card__body > a.link-detail > h5.card__title.mb-0.ellipsis")
     coin_detail_data = soup.select("p[class = 'card__description']")
 
     min_len = min(len(coin_name_data), len(coin_goodnewstime_data), len(coin_addedtime_data), len(coin_title_data),
@@ -41,8 +42,10 @@ def packingDataFromcoinmarketcal(page_number, result):
 
     # 전처리 이름[이름, 태그], 호재 시간[년, 월, 일], 추가된 시간[년, 월, 일], 제목[문자열], 상세내용[문자열]
     # 전처리 후 패킹
-    one_page_data = []
     for i in range(0, min_len):
+        #딕셔너리 키 값
+        coin_key = str(coin_key_data[i])
+        coin_key = coin_key[coin_key.find('href="') + 6 : coin_key.find('" title')]
         # 이름 전처리
         coin_name = ' '.join(coin_name_data[i].string.split())
         coin_name = [coin_name[0: coin_name.find('(') - 1], coin_name[coin_name.find('(') + 1: coin_name.find(')')]]
@@ -60,6 +63,7 @@ def packingDataFromcoinmarketcal(page_number, result):
         coin_title = str(coin_title_data[i].string)
         # 상세내용
         coin_detail = ' '.join(coin_detail_data[i].string.split())
+        coin_detail = coin_detail[0 : len(coin_detail) - 1]
 
         # 패킹
         item_coin = {
@@ -69,14 +73,13 @@ def packingDataFromcoinmarketcal(page_number, result):
             'title': coin_title,
             'detail': coin_detail
         }
-        result.append(item_coin)
-
+        result[coin_key] = item_coin
 
 
 if __name__ == '__main__':
     start_time = time.time()
     manager = multiprocessing.Manager()
-    result = manager.list()
+    result = manager.dict()
     indxs = [i for i in range(1, getPageNumberFromcoinmarketcal() + 1)]
     procs = []
 
@@ -87,5 +90,7 @@ if __name__ == '__main__':
 
     for proc in procs:
         proc.join()
+
     print(time.time() - start_time)
-    print(result)
+    print(json.dumps(result.copy(), indent="\t"))
+
