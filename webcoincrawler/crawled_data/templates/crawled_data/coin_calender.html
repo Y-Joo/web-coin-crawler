@@ -42,7 +42,7 @@
 				function (e) {
 					if (dragFlag) {
 						var obj = $(this);
-						obj.scrollLeft(x - e.screenX + pre_x);
+						obj.scrollLeft(x+ 2.2*(pre_x-e.screenX));
 						obj.scrollTop(y - e.screenY + pre_y);
                         return false;
 					}

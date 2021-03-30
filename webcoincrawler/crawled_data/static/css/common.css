@@ -147,6 +147,17 @@ body{
     left:50%;
     padding:5px;
     text-align: center;
+    overflow-y: auto;
+}
+.detail::-webkit-scrollbar{
+    width: 10px;
+  }
+.detail::-webkit-scrollbar-thumb {
+    background-color: royalblue;
+    border-radius: 30px;
+}
+.detail::-webkit-scrollbar-track {
+    display:none;
 }
 .coin_name{
     font-size:medium;
@@ -164,4 +175,8 @@ body{
 }
 .coin_name:hover{
   background-size: 100% 100%;
+}
+.coin_link:hover{
+    color:blue;
+    cursor: pointer;
 }

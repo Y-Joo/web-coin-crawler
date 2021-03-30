@@ -11,23 +11,42 @@ window.onload = function () {
     buildCalendar();
 
 
-    function addnews(key, id, coin_name) {
-        var news_date = document.getElementById(id);
+    function addnews(key, key_2) {
+        var news_date = document.getElementById(key);
         if (!news_date){
             return
         }
-        const new_text = document.createTextNode(coin_name);
+        const new_text = document.createTextNode(key_2);
         const newdiv = document.createElement('div');
         newdiv.setAttribute('class', 'coin_name');
-        const coin_title=coindict[key]["title"];
-        const coin_detail=coindict[key]["detail"];
-        newdiv.addEventListener('click', function(){
-            detail.innerHTML=coin_title+'<br>'+'<br>'+coin_detail;
-            detail.style.display='block';
-        })
+
         newdiv.appendChild(new_text);
         newdiv.style.color = 'black';
         news_date.appendChild(newdiv);
+        newdiv.addEventListener('click', function(){
+            detail.innerHTML="";
+            let divEls = document.querySelectorAll('.detail > div');
+            for (let i = 0; i < divEls.length; i++) {
+                divEls[i].remove();
+            }
+
+            for (let i=0;i<coindict[key][key_2].length;i++){
+                const dat=coindict[key][key_2][i];
+                const coin_link=dat[0];
+                const coin_title=dat[1];
+
+                const link_text=document.createTextNode(coin_link);
+                const link_div=document.createElement('div');
+                link_div.appendChild(link_text);
+                link_div.setAttribute('class', 'coin_link');
+                link_div.addEventListener('click', function (){
+                    window.open(coin_link);
+                })
+                detail.innerHTML+=coin_title+'<br>';
+                detail.appendChild(link_div);
+            }
+            detail.style.display='block';
+        })
     }
 
     function buildCalendar() {
@@ -47,10 +66,12 @@ window.onload = function () {
         headerYear.innerHTML = `${monthList[firstDate.getMonth()]}&nbsp;&nbsp;&nbsp;&nbsp;${today.getFullYear()}`;
         makeElement(firstDate);
         for (var key in coindict) {
-            if (coindict[key]["goodnewstime"][0] == tyear && coindict[key]["goodnewstime"][1] == tmonth) {
-                var newid = coindict[key]["goodnewstime"].join('-');
-                var newtext = coindict[key]["name"][1];
-                addnews(key, newid, newtext);
+            var cyear=key.split('-')[0];
+            var cmonth=key.split('-')[1];
+            if (cyear == tyear && cmonth == tmonth) {
+                for (var key_2 in coindict[key]){
+                    addnews(key, key_2);
+                }
             }
         }
         currentDateget();

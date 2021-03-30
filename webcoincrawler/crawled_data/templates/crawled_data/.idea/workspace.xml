@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b577b524-3cdd-4180-a77b-ca8aaf321eb9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../static/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/css/common.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/js/Test.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/js/Test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coin_calender.html" beforeDir="false" afterPath="$PROJECT_DIR$/coin_calender.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +36,7 @@
       <option name="presentableId" value="Default" />
       <updated>1616398585818</updated>
       <workItem from="1616398587652" duration="9000" />
+      <workItem from="1617113226167" duration="52000" />
     </task>
     <servers />
   </component>
@@ -50,5 +53,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
