@@ -6,12 +6,16 @@ window.onload = function () {
     const nextEl = document.querySelector('.next');
     const detail= document.querySelector('.detail');
     let currentDate;
+    var delay = 1000;
 
     buildCalendar();
 
 
     function addnews(key, id, coin_name) {
         var news_date = document.getElementById(id);
+        if (!news_date){
+            return
+        }
         const new_text = document.createTextNode(coin_name);
         const newdiv = document.createElement('div');
         newdiv.setAttribute('class', 'coin_name');
@@ -78,11 +82,13 @@ window.onload = function () {
         today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
         removeCalendar();
         buildCalendar();
+        $('.content-right').stop().animate({scrollLeft: 0}, delay);
     });
     nextEl.addEventListener('click', function () {
         today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
         removeCalendar();
         buildCalendar();
+        $('.content-right').stop().animate({scrollLeft: 0}, delay);
     });
 
 
