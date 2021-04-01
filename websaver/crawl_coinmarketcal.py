@@ -15,9 +15,7 @@ def get_urls():
         urls.append("https://coinmarketcal.com/en/" + "?page=" + str(i))
     return urls
 
-def do_crawl(url_and_result):
-    url = url_and_result[0]
-    result = url_and_result[1]
+def do_crawl(url, result):
     html = urlopen(url)
 
     # # 사이트에 문제가 있으면 함수 종료
