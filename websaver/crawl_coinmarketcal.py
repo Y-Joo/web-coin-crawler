@@ -5,15 +5,19 @@ import re
 month = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11,
          'Dec': 12}
 
-def getPageNumberFromcoinmarketcal():
+def get_urls():
     html = urlopen("https://coinmarketcal.com/en/")
     soup = BeautifulSoup(html, "html.parser")
     coin_maxpage_data = soup.select("a[class='page-link rounded']").pop()
     coin_maxpage = re.findall("\d+", str(coin_maxpage_data))
-    return int(coin_maxpage.pop())
+    urls = []
+    for i in range(1, int(coin_maxpage.pop())):
+        urls.append("https://coinmarketcal.com/en/" + "?page=" + str(i))
+    return urls
 
-def packingDataFromcoinmarketcal(page_number, result):
-    url = "https://coinmarketcal.com/en/" + "?page=" + str(page_number)
+def do_crawl(url_and_result):
+    url = url_and_result[0]
+    result = url_and_result[1]
     html = urlopen(url)
 
     # # 사이트에 문제가 있으면 함수 종료

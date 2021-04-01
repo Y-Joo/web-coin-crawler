@@ -6,16 +6,20 @@ import re
 month = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11,
          'Dec': 12}
 
-def getPageNumberFromcoinscalendar():
+def get_urls():
     html = urlopen("https://coinscalendar.com/")
     soup = BeautifulSoup(html, "html.parser")
     coin_maxpage_data = soup.select("a[class='page-link']").pop()
     coin_maxpage = str(coin_maxpage_data)
     coin_maxpage = coin_maxpage[coin_maxpage.find("page/") + 5 : coin_maxpage.find('">')]
-    return int(coin_maxpage)
+    urls = []
+    for i in range(1, int(coin_maxpage)):
+        urls.append("https://coinscalendar.com/" + "page/" + str(i))
+    return urls
 
-def packingDataFromcoinscalendar(page_number, result):
-    url = "https://coinscalendar.com/" + "page/" + str(page_number)
+def do_crawl(url_and_result):
+    url = url_and_result[0]
+    result = url_and_result[1]
     html = urlopen(url)
 
     # # 사이트에 문제가 있으면 함수 종료
