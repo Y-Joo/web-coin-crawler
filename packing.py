@@ -26,17 +26,19 @@ def get_urls():
 
 
 def do_html_crawl(url):
+    print(url)
     html = urlopen(url)
     parsed_html = BeautifulSoup(html, "html.parser")
     coin_name_data = parsed_html.select(
         "article.col-xl-3.col-lg-4.col-md-6.py-3 > div.card.text-center > div.card__body > h5.card__coins > a.link-detail")
     print(coin_name_data[0])
-    return parsed_html
 
-def do_process_with_thread_crawl():
+
+def do_process_with_thread_crawl(urls):
     do_thread_crawl(get_urls())
 
-def do_thread_crawl(urls: list):
+def do_thread_crawl():
+    urls = get_urls()
     thread_list = []
     with ThreadPoolExecutor(max_workers=8) as executor:
         for url in urls:
@@ -49,7 +51,17 @@ if __name__ == '__main__':
     manager = multiprocessing.Manager()
     result = manager.dict()
     urls = get_urls()
+    # do_thread_crawl()
+    # with multiprocessing.Pool(processes=8) as pool:
+    #     pool.map(do_process_with_thread_crawl, urls)
+    procs = []
+    for url in urls:
+        print(url)
+        proc = multiprocessing.Process(target=do_html_crawl, args=(url,))
+        procs.append(proc)
+        proc.start()
 
-    do_thread_crawl(urls)
+    for proc in procs:
+        proc.join()
 
     print(time.time() - start_time)

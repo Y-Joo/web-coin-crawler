@@ -22,33 +22,27 @@ def preprocessingDict(dic: dict):
             coin_dict[value['date']][value['symbol']] = [[key, value['title'], value['name']]]
     return coin_dict
 
-def multi_run_wrapper(args):
-    do_process_with_thread_crawl(*args)
-
-def do_process_with_thread_crawl(result):
-    do_thread_crawl(coinmarketcal.get_urls(), coinscalendar.get_urls(), result)
-
-def do_thread_crawl(urls1: list, urls2, result: dict):
-    thread_list = []
-
-    with ThreadPoolExecutor(max_workers=16) as executor:
-        for url in urls2:
-            thread_list.append(executor.submit(coinscalendar.do_crawl, (url, result)))
-        for url in urls1:
-            thread_list.append(executor.submit(coinmarketcal.do_crawl, (url, result)))
-        for execution in concurrent.futures.as_completed(thread_list):
-            execution.result()
-
-
 if __name__ == '__main__':
     start_time = time.time()
     manager = multiprocessing.Manager()
     result = manager.dict()
+    procs = []
+    urls = []
 
-    proc = multiprocessing.Process(target=do_thread_crawl, args=(coinmarketcal.get_urls(), coinscalendar.get_urls(), result))
-    proc.start()
-    proc.join()
+    urls = coinmarketcal.get_urls()
+    for url in urls:
+        proc = multiprocessing.Process(target=coinmarketcal.do_crawl, args=(url, result,))
+        procs.append(proc)
+        proc.start()
+
+    urls = coinscalendar.get_urls()
+    for url in urls:
+        proc = multiprocessing.Process(target=coinscalendar.do_crawl, args=(url, result,))
+        procs.append(proc)
+        proc.start()
+
+    for proc in procs:
+        proc.join()
+
     print(time.time() - start_time)
-    # print(json.dumps(preprocessingDict(result.copy()), indent="\t"))
-    for t, l in preprocessingDict(result.copy()).items():
-        BlogData(title=t, link=l).save()
+    BlogData(title="COIN_DATA", link=preprocessingDict(result.copy())).save()
