@@ -50,5 +50,5 @@ if __name__ == '__main__':
     proc.join()
     print(time.time() - start_time)
     # print(json.dumps(preprocessingDict(result.copy()), indent="\t"))
-    # for t, l in result.items():
-    #     BlogData(title=t, link=l).save()
+    for t, l in preprocessingDict(result.copy()).items():
+        BlogData(title=t, link=l).save()
