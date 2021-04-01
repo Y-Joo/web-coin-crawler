@@ -1,0 +1,182 @@
+html{
+    scroll-behavior: smooth;
+}
+/* btn css */
+.clickBtn {
+    width: 70px;
+    height: 35px;
+    border-radius: 10%;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    background: royalblue;
+    margin-right: 30px;
+}
+
+/* header */
+header {
+    background-color: white;
+    display: flex;
+    padding: 10px;
+    height: 7%;
+    box-sizing: border-box;
+}
+
+header > h1 {
+    display: inline-block;
+    height: 100%;
+    flex-grow: 1;
+}
+
+.fa-calendar-check {
+    color: royalblue;
+    margin-right: 2%;
+    vertical-align: middle;
+}
+
+header > h1 > span {
+    color: #a7a7a7;
+    font-size: 24px;
+    font-weight: 400;
+    vertical-align: bottom;
+}
+
+.calendar_title {
+    margin: 0 auto;
+    flex-grow: 1;
+}
+
+.calendar_title .prev, .next {
+    width: 30px;
+    height: 100%;
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+    outline: none;
+    color: #5c5c5c;
+}
+
+.calendar_title .current-year-month {
+    font-size: 24px;
+    vertical-align: middle;
+    color: royalblue;
+    display: inline-block;
+    margin: 0 20px;
+}
+
+body{
+    background-color: royalblue;
+}
+
+/* content right */
+.content-right {
+    float: right;
+    box-sizing: border-box;
+    width: 100%;
+    height:680px;
+    white-space: nowrap;
+    overflow-x: auto;
+    background-color: royalblue;
+}
+.content-right::-webkit-scrollbar{
+    height: 10px;
+  }
+.content-right::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 30px;
+}
+.content-right::-webkit-scrollbar-track {
+    display:none;
+}
+
+/* calendar body  */
+.calendar-body > div {
+    box-sizing: border-box;
+    text-align: center;
+    width: 180px;
+    height: auto;
+    min-height: 200px;
+    max-height: 500px;
+    display: inline-block;
+    border-bottom: 1px solid #e4e4e4;
+    border-top: 1px solid #e4e4e4;
+    vertical-align: top;
+    color: royalblue;
+    overflow-y: auto;
+    border-left: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    border-radius: 17px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 17px;
+    background-color: white;
+    padding:0 0 10px 0;
+    box-shadow: 0 5px 3px mediumblue;
+}
+
+.calendar-body > div + div {
+    border-left: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    border-radius: 17px;
+    margin-left: 20px;
+}
+
+.calendar-body > div::-webkit-scrollbar{
+    width: 10px;
+  }
+.calendar-body > div::-webkit-scrollbar-thumb {
+    background-color: royalblue;
+    border-radius: 30px;
+}
+.calendar-body > div::-webkit-scrollbar-track {
+    display:none;
+}
+.dateSet{
+    font-size: large;
+    font-weight: bold;
+}
+.detail {
+    background: white;
+    border:1px solid #5D5D5D;
+    border-radius: 20px;
+    position: absolute;
+    height: 300px;
+    width: 400px;
+    margin:-150px 0px 0px -200px;
+    top:50%;
+    left:50%;
+    padding:5px;
+    text-align: center;
+    overflow-y: auto;
+}
+.detail::-webkit-scrollbar{
+    width: 10px;
+  }
+.detail::-webkit-scrollbar-thumb {
+    background-color: royalblue;
+    border-radius: 30px;
+}
+.detail::-webkit-scrollbar-track {
+    display:none;
+}
+.coin_name{
+    font-size:medium;
+    font-weight: normal;
+}
+.coin_name:first-child{
+    padding-top: 5px;
+}
+.coin_name {
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0;
+  background-position: 0 88%;
+  transition: background-size 0.25s ease-in;
+}
+.coin_name:hover{
+  background-size: 100% 100%;
+}
+.coin_link:hover{
+    color:blue;
+    cursor: pointer;
+}
