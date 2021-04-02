@@ -45,4 +45,4 @@ if __name__ == '__main__':
         proc.join()
 
     print(time.time() - start_time)
-    BlogData(title="COIN_DATA", link=preprocessingDict(result.copy())).save()
+    BlogData(title="COIN_DATA", content=json.dumps(preprocessingDict(result.copy()))).save()
