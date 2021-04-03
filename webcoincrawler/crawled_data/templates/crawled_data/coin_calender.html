@@ -13,7 +13,7 @@
         let posts = [
             {% for post in BlogDatas %}
               {
-                 coindict: "{{ post.link }}",
+                 coindict: JSON.parse("{{ post.content | escapejs }}")
               },
             {% endfor %}
         ]

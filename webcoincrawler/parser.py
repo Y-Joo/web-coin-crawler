@@ -22,7 +22,6 @@ def preprocessingDict(dic: dict):
             coin_dict[value['date']][value['symbol']] = [[key, value['title'], value['name']]]
     return coin_dict
 
-
 if __name__ == '__main__':
     start_time = time.time()
     manager = multiprocessing.Manager()
@@ -46,4 +45,4 @@ if __name__ == '__main__':
         proc.join()
 
     print(time.time() - start_time)
-    BlogData(title="COIN_DATA", link=preprocessingDict(result.copy())).save()
+    BlogData(title="COIN_DATA", content=json.dumps(preprocessingDict(result.copy()))).save()
