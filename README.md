@@ -1,1 +1,1 @@
-# web-coin-crawler
+# WebCoinCrowler
