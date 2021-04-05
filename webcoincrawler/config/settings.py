@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'webcoincrawler.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
