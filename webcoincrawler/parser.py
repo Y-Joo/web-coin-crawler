@@ -8,7 +8,7 @@ from concurrent.futures.thread import ThreadPoolExecutor
 import crawl_coinmarketcal as coinmarketcal
 import crawl_coinscalendar as coinscalendar
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "webcoincrawler.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 import django
 django.setup()
 from crawled_data.models import BlogData
