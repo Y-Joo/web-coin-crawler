@@ -25,7 +25,7 @@ SECRET_KEY = '!bah%0xgd^nv!_0j&(pe)my&d1wst%mvpp&fzi0k6m3zysc*08'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'parsed_data',
+    'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -81,6 +82,9 @@ DATABASES = {
     }
 }
 
+CRONJOBS = [
+    ('0 * * * *', 'websaver.cron.crontab', '>> /tmp/log/ggbc_cron.log'),
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
