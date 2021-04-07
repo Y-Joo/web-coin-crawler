@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ef32c4a1-ff0e-4f76-a080-636c38c6a894" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +26,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\지영주\Documents\web-coin-crawler\webcoincrawler" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.cron">
     <configuration name="cron" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -101,7 +107,7 @@
       <workItem from="1617769599372" duration="2226000" />
       <workItem from="1617777553363" duration="1716000" />
       <workItem from="1617780487411" duration="2268000" />
-      <workItem from="1617800200620" duration="2534000" />
+      <workItem from="1617800200620" duration="3789000" />
     </task>
     <servers />
   </component>
