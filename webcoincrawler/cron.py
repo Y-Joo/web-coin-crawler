@@ -7,6 +7,7 @@ import os
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 import django
+import datetime
 
 django.setup()
 from crawled_data.models import BlogData
@@ -34,3 +35,17 @@ def crontab():
         coinscalendar.do_crawl(url, result)
 
     BlogData(title="COIN_DATA", content=json.dumps(preprocessingDict(result.copy()))).save()
+def crontab_test():
+    urls = coinmarketcal.get_urls()
+
+    test_dict = {'2021-4-10': {
+        'XXX': [['https://coinmarketcal.com/en/event/dis-listing-on-pancake-64795', str(datetime.datetime.now()),
+                 str(datetime.datetime.now())]]
+    },
+        '2021-4-12': {
+            'YYY': [['https://coinmarketcal.com/en/event/alpha-release-63956', str(datetime.datetime.now()),
+                     str(datetime.datetime.now())]]
+        },
+    }
+
+    BlogData(title="COIN_DATA", content=json.dumps(test_dict)).save()

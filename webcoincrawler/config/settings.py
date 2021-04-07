@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 ]
 
 CRONJOBS = [
-    ('0 * * * *', 'webcoincrawler.cron.crontab'),
+    ('* * * * *', 'webcoincrawler.cron.crontab_test'),
 ]
 
 MIDDLEWARE = [
