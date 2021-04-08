@@ -46,7 +46,7 @@ def do_crawl(url, result):
         coin_date = coin_date[:3]
         coin_date[1] = str(month[coin_date[1]])
         coin_date.reverse()
-        coin_date = coin_date[0] + "-" + coin_date[1] + "-" + coin_date[2]
+        coin_date = coin_date[0] + "-" + coin_date[1] + "-" + (coin_date[2] if coin_date[2][0] != '0' else coin_date[2][1])
         # 제목
         coin_title = str(coin_title_data[i].string)
         # 패킹
