@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ef32c4a1-ff0e-4f76-a080-636c38c6a894" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-    </list>
+    <list default="true" id="ef32c4a1-ff0e-4f76-a080-636c38c6a894" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,7 +109,7 @@
       <workItem from="1617862124388" duration="505000" />
       <workItem from="1617864268860" duration="3568000" />
       <workItem from="1617870015866" duration="2256000" />
-      <workItem from="1617891173171" duration="1958000" />
+      <workItem from="1617891173171" duration="2384000" />
     </task>
     <servers />
   </component>
