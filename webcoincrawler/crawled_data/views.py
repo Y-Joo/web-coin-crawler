@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from models import BlogData
+from .models import BlogData
 def BlogData_list(request):
     context = {
         "BlogDatas": BlogData.objects.all()
