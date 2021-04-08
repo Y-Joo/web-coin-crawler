@@ -1,13 +1,13 @@
 import json
 import collections
 import logging
+import datetime
 import crawl_coinmarketcal as coinmarketcal
 import crawl_coinscalendar as coinscalendar
 import os
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 import django
-import datetime
 
 django.setup()
 from crawled_data.models import BlogData
@@ -35,4 +35,6 @@ def crontab():
         coinscalendar.do_crawl(url, result)
 
     BlogData(title="COIN_DATA", content=json.dumps(preprocessingDict(result.copy()))).save()
-    logging.INFO(result)
+    f = open('test.txt', 'w')
+    f.write(str(datetime.datetime.now()))
+    f.close()
