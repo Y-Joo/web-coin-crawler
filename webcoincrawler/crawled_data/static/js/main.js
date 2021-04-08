@@ -30,8 +30,8 @@ window.onload = function () {
                 divEls[i].remove();
             }
 
-            for (let i=0;i<posts[0].coindict[key][key_2].length;i++){
-                const dat=posts[0].coindict[key][key_2][i];
+            for (let i=0;i<posts[-1].coindict[key][key_2].length;i++){
+                const dat=posts[-1].coindict[key][key_2][i];
                 const coin_link=dat[0];
                 const coin_title=dat[1];
 
@@ -65,11 +65,11 @@ window.onload = function () {
         }
         headerYear.innerHTML = `${monthList[firstDate.getMonth()]}&nbsp;&nbsp;&nbsp;&nbsp;${today.getFullYear()}`;
         makeElement(firstDate);
-        for (var key in posts[0].coindict) {
+        for (var key in posts[-1].coindict) {
             var cyear=key.split('-')[0];
             var cmonth=key.split('-')[1];
             if (cyear == tyear && cmonth == tmonth) {
-                for (var key_2 in posts[0].coindict[key]){
+                for (var key_2 in posts[-1].coindict[key]){
                     addnews(key, key_2);
                 }
             }
