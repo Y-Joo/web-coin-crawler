@@ -5,7 +5,7 @@ html{
 /* 헤더 - prev버튼, next버튼, 연도 월 */
 header {
     background-color: white;
-    padding: 30px;
+    padding: 25px;
     text-align: center
 }
 
@@ -46,6 +46,7 @@ img {
     float: right;
     box-sizing: border-box;
     width: 100%;
+    height:560px;
     white-space: nowrap;
     overflow-x: auto;
     background-color: royalblue;
