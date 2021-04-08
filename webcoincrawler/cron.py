@@ -1,6 +1,6 @@
 import json
 import collections
-
+import logging
 import crawl_coinmarketcal as coinmarketcal
 import crawl_coinscalendar as coinscalendar
 import os
@@ -35,3 +35,4 @@ def crontab():
         coinscalendar.do_crawl(url, result)
 
     BlogData(title="COIN_DATA", content=json.dumps(preprocessingDict(result.copy()))).save()
+    logging.INFO(result)
