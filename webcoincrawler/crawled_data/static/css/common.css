@@ -1,89 +1,60 @@
 html{
     scroll-behavior: smooth;
 }
-/* btn css */
-.clickBtn {
-    width: 70px;
-    height: 35px;
-    border-radius: 10%;
-    font-size: 15px;
-    font-weight: 600;
-    border: none;
-    background: royalblue;
-    margin-right: 30px;
-}
 
-/* header */
+/* 헤더 - prev버튼, next버튼, 연도 월 */
 header {
     background-color: white;
-    display: flex;
-    padding: 10px;
-    height: 7%;
-    box-sizing: border-box;
-}
-
-header > h1 {
-    display: inline-block;
-    height: 100%;
-    flex-grow: 1;
-}
-
-.fa-calendar-check {
-    color: royalblue;
-    margin-right: 2%;
-    vertical-align: middle;
-}
-
-header > h1 > span {
-    color: #a7a7a7;
-    font-size: 24px;
-    font-weight: 400;
-    vertical-align: bottom;
-}
-
-.calendar_title {
-    margin: 0 auto;
-    flex-grow: 1;
-}
-
-.calendar_title .prev, .next {
-    width: 30px;
-    height: 100%;
-    cursor: pointer;
-    border: none;
-    font-size: 20px;
-    outline: none;
-    color: #5c5c5c;
-}
-
-.calendar_title .current-year-month {
-    font-size: 24px;
-    vertical-align: middle;
-    color: royalblue;
-    display: inline-block;
-    margin: 0 20px;
+    padding: 30px;
+    text-align: center
 }
 
 body{
     background-color: royalblue;
 }
 
+/* 버튼 이미지 크기 조절 */
+img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.calendar_title {
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.calendar_title .prev, .next {
+    background-color: white;
+    border: none;
+    vertical-align: middle
+}
+
+.calendar_title .current-year-month {
+    font-size: 30px;
+    color: royalblue;
+    margin: 10px;
+
+    vertical-align: middle;
+}
+
+
+
 /* content right */
 .content-right {
     float: right;
     box-sizing: border-box;
     width: 100%;
-    height:680px;
     white-space: nowrap;
     overflow-x: auto;
     background-color: royalblue;
 }
 .content-right::-webkit-scrollbar{
-    height: 10px;
+    display:none;
   }
 .content-right::-webkit-scrollbar-thumb {
-    background-color: white;
-    border-radius: 30px;
+    display:none;
 }
 .content-right::-webkit-scrollbar-track {
     display:none;
@@ -93,7 +64,7 @@ body{
 .calendar-body > div {
     box-sizing: border-box;
     text-align: center;
-    width: 180px;
+    width: 120px;
     height: auto;
     min-height: 200px;
     max-height: 500px;
@@ -118,7 +89,7 @@ body{
     border-left: 1px solid #e4e4e4;
     border-right: 1px solid #e4e4e4;
     border-radius: 17px;
-    margin-left: 20px;
+    margin-left: 18px;
 }
 
 .calendar-body > div::-webkit-scrollbar{
@@ -147,17 +118,6 @@ body{
     left:50%;
     padding:5px;
     text-align: center;
-    overflow-y: auto;
-}
-.detail::-webkit-scrollbar{
-    width: 10px;
-  }
-.detail::-webkit-scrollbar-thumb {
-    background-color: royalblue;
-    border-radius: 30px;
-}
-.detail::-webkit-scrollbar-track {
-    display:none;
 }
 .coin_name{
     font-size:medium;
@@ -169,14 +129,11 @@ body{
 .coin_name {
   background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
   background-repeat: no-repeat;
-  background-size: 100% 0;
-  background-position: 0 88%;
+  background-size: 50% 0;
+  background-position: center;
   transition: background-size 0.25s ease-in;
 }
 .coin_name:hover{
-  background-size: 100% 100%;
-}
-.coin_link:hover{
-    color:blue;
-    cursor: pointer;
+  background-size: 50% 100%;
+  background-position: center;
 }

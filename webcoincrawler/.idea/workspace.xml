@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ef32c4a1-ff0e-4f76-a080-636c38c6a894" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawl_coinmarketcal.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_coinmarketcal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawl_coinscalendar.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl_coinscalendar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawled_data/static/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/crawled_data/static/css/common.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawled_data/templates/crawled_data/coin_calender.html" beforeDir="false" afterPath="$PROJECT_DIR$/crawled_data/templates/crawled_data/coin_calender.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +112,8 @@
       <workItem from="1617857329029" duration="2652000" />
       <workItem from="1617862124388" duration="505000" />
       <workItem from="1617864268860" duration="3568000" />
-      <workItem from="1617870015866" duration="394000" />
+      <workItem from="1617870015866" duration="2256000" />
+      <workItem from="1617891173171" duration="93000" />
     </task>
     <servers />
   </component>
