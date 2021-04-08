@@ -24,6 +24,9 @@ def preprocessingDict(dic: dict):
 
 
 def crontab():
+    f = open('test.txt', 'w')
+    f.write(str(datetime.datetime.now()))
+    f.close()
     result = dict()
 
     urls = coinmarketcal.get_urls()
@@ -35,6 +38,3 @@ def crontab():
         coinscalendar.do_crawl(url, result)
 
     BlogData(title="COIN_DATA", content=json.dumps(preprocessingDict(result.copy()))).save()
-    f = open('test.txt', 'w')
-    f.write(str(datetime.datetime.now()))
-    f.close()
