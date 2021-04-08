@@ -24,6 +24,7 @@ def preprocessingDict(dic: dict):
 
 
 def crontab():
+    print("hello")
     f = open('test.txt', 'w')
     f.write(str(datetime.datetime.now()))
     f.close()
