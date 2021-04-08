@@ -39,3 +39,4 @@ def crontab():
         coinscalendar.do_crawl(url, result)
 
     BlogData(title="COIN_DATA", content=json.dumps(preprocessingDict(result.copy()))).save()
+crontab()
