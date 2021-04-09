@@ -31,24 +31,27 @@ window.onload = function () {
             }
 
             for (let i=0;i<posts[0].coindict[key][key_2].length;i++){
-                const dat=posts[0].coindict[key][key_2][i];
-                const coin_link=dat[0];
-                const coin_title=dat[1];
+                (function(m) {
+                    const dat = posts[0].coindict[key][key_2][i];
+                    const coin_link = dat[0];
+                    const coin_title = dat[1];
 
-                const link_text=document.createTextNode(coin_link);
-                const link_div=document.createElement('div');
-                link_div.appendChild(link_text);
-                link_div.setAttribute('class', 'coin_link');
-                link_div.addEventListener('click', function (){
-                    console.log('click');
-                    window.open(coin_link);
-                })
-                detail.innerHTML+=coin_title+'<br>';
-                detail.appendChild(link_div);
-                detail.innerHTML+='<br>';
+                    const link_text = document.createTextNode(coin_link);
+                    const link_div = document.createElement('div');
+                    link_div.appendChild(link_text);
+                    link_div.setAttribute('class', 'coin_link');
+                    link_div.addEventListener('click', function () {
+                        console.log('click');
+                        window.open(coin_link);
+                    },false);
+                    detail.innerHTML += coin_title + '<br>';
+                    detail.appendChild(link_div);
+                    detail.innerHTML += '<br>';
+                })(i);
             }
             detail.style.display='block';
-        })
+
+        },false);
     }
 
     function buildCalendar() {
