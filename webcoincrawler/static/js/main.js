@@ -44,6 +44,7 @@ window.onload = function () {
                 })
                 detail.innerHTML+=coin_title+'<br>';
                 detail.appendChild(link_div);
+                detail.innerHTML+='<br>';
             }
             detail.style.display='block';
         })
