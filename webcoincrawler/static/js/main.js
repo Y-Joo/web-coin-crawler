@@ -40,6 +40,7 @@ window.onload = function () {
                 link_div.appendChild(link_text);
                 link_div.setAttribute('class', 'coin_link');
                 link_div.addEventListener('click', function (){
+                    console.log('click');
                     window.open(coin_link);
                 })
                 detail.innerHTML+=coin_title+'<br>';
