@@ -32,7 +32,7 @@ window.onload = function () {
 
             for (let i=0;i<posts[0].coindict[key][key_2].length;i++){
                 (function(m) {
-                    const dat = posts[0].coindict[key][key_2][i];
+                    const dat = posts[0].coindict[key][key_2][m];
                     const coin_link = dat[0];
                     const coin_title = dat[1];
 
@@ -41,7 +41,7 @@ window.onload = function () {
                     link_div.appendChild(link_text);
                     link_div.setAttribute('class', 'coin_link');
                     link_div.addEventListener('click', function () {
-                        console.log('click');
+                        console.log(1);
                         window.open(coin_link);
                     },false);
                     detail.innerHTML += coin_title + '<br>';
