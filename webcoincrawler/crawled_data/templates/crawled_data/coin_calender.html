@@ -107,7 +107,7 @@
 <script>
     detail=document.querySelector('.detail');
     $('html').click(function(e) {
-    if(!$(e.target).hasClass('detail') && !$(e.target).hasClass('coin_name')) {
+    if(!$(e.target).hasClass('detail') && !$(e.target).hasClass('coin_name') && !$(e.target).hasClass('coin_link')) {
         detail.style.display='none';
     }
     });
