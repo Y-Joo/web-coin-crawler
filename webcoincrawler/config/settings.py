@@ -29,7 +29,6 @@ ALLOWED_HOSTS = ['13.124.18.171', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,10 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crawled_data',
-]
-
-CRONJOBS = [
-    ('* * * * *', 'webcoincrawler.cron.crontab'),
 ]
 
 MIDDLEWARE = [

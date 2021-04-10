@@ -4,7 +4,7 @@ window.onload = function () {
     const calendarBody = document.querySelector('.calendar-body');
     const prevEl = document.querySelector('.prev');
     const nextEl = document.querySelector('.next');
-    const detail= document.querySelector('.detail');
+    const detail = document.querySelector('.detail');
     let currentDate;
     var delay = 1000;
 
@@ -13,7 +13,7 @@ window.onload = function () {
 
     function addnews(key, key_2) {
         var news_date = document.getElementById(key);
-        if (!news_date){
+        if (!news_date) {
             return
         }
         const new_text = document.createTextNode(key_2);
@@ -23,35 +23,32 @@ window.onload = function () {
         newdiv.appendChild(new_text);
         newdiv.style.color = 'black';
         news_date.appendChild(newdiv);
-        newdiv.addEventListener('click', function(){
-            detail.innerHTML="";
+        newdiv.addEventListener('click', function () {
+            detail.innerHTML = "";
             let divEls = document.querySelectorAll('.detail > div');
             for (let i = 0; i < divEls.length; i++) {
                 divEls[i].remove();
             }
 
-            for (let i=0;i<posts[0].coindict[key][key_2].length;i++){
-                (function(m) {
+            for (let i = 0; i < posts[0].coindict[key][key_2].length; i++) {
+                (function (m) {
                     const dat = posts[0].coindict[key][key_2][m];
                     const coin_link = dat[0];
                     const coin_title = dat[1];
 
                     const link_text = document.createTextNode(coin_link);
-                    const link_div = document.createElement('div');
+                    const link_div = document.createElement('a');
+                    link_div.setAttribute('href', coin_link);
+                    link_div.setAttribute('target', "_blank");
                     link_div.appendChild(link_text);
                     link_div.setAttribute('class', 'coin_link');
-                    link_div.addEventListener('click', function () {
-                        console.log(1);
-                        window.open(coin_link);
-                    },false);
                     detail.innerHTML += coin_title + '<br>';
                     detail.appendChild(link_div);
-                    detail.innerHTML += '<br>';
+                    detail.innerHTML += '<br>' + '<br>';
                 })(i);
             }
-            detail.style.display='block';
-
-        },false);
+            detail.style.display = 'block';
+        })
     }
 
     function buildCalendar() {
@@ -71,10 +68,10 @@ window.onload = function () {
         headerYear.innerHTML = `${monthList[firstDate.getMonth()]}&nbsp;&nbsp;&nbsp;&nbsp;${today.getFullYear()}`;
         makeElement(firstDate);
         for (var key in posts[0].coindict) {
-            var cyear=key.split('-')[0];
-            var cmonth=key.split('-')[1];
+            var cyear = key.split('-')[0];
+            var cmonth = key.split('-')[1];
             if (cyear == tyear && cmonth == tmonth) {
-                for (var key_2 in posts[0].coindict[key]){
+                for (var key_2 in posts[0].coindict[key]) {
                     addnews(key, key_2);
                 }
             }
