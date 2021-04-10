@@ -129,6 +129,7 @@ img {
 }
 .detail::-webkit-scrollbar {
     width:10px;
+    border-radius: 20px;
 }
 .detail::-webkit-scrollbar-thumb {
     background-color: royalblue;
