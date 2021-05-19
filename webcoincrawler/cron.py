@@ -30,9 +30,9 @@ def crontab():
     for url in urls:
         coinmarketcal.do_crawl(url, result)
 
-    urls = coinscalendar.get_urls()
-    for url in urls:
-        coinscalendar.do_crawl(url, result)
+    # urls = coinscalendar.get_urls()
+    # for url in urls:
+    #     coinscalendar.do_crawl(url, result)
     BlogData.objects.all().delete()
     BlogData(title="COIN_DATA", content=json.dumps(preprocessingDict(result.copy()))).save()
 crontab()
