@@ -36,7 +36,7 @@ function getListData(value) {
 function dateCellRender(value, clickPopOver) {
   const listData = getListData(value);
   let click = false;
-  console.log(value);
+  // console.log(value);
   if (Object.keys(clickPopOver.value).length !== 0 && clickPopOver.click) {
     if(value._d.getDate() === clickPopOver.value._d.getDate()) {
       if(value._d.getMonth() === clickPopOver.value._d.getMonth()){
@@ -46,9 +46,9 @@ function dateCellRender(value, clickPopOver) {
   }
   
   return (
-    <div>
+    <div style={{textAlign: 'center'}}>
 
-<Popover content={content} trigger='click' visible={click}>
+      <Popover content={<div>hello</div>} trigger='click' visible={click}>
       </Popover>
       <ul className="events">
         {listData.map(item => (
@@ -58,8 +58,6 @@ function dateCellRender(value, clickPopOver) {
         ))}
       </ul>
     </div>
-     
-    
   );
 }
 
@@ -81,28 +79,27 @@ function monthCellRender(value) {
 
 const content = (
   <div>
-    <p>Contentddddddddddddddddddddddddddd</p>
-    <a href="https://www.youtube.com/">Contentdddddddddddddddddddddddddd</a>
+    <p>TEST</p>
+    <a href="https://www.youtube.com/">TEST</a>
   </div>
 );
-
-const showPopOver = (date) => {
-  console.log(date);
-
-  return (
-    <Popover content={content}>
-    </Popover>
-  )
-}
 
 function LandingPage() {
 
     const [clickPopOver, setClickPopOver] = useState({value: { }, click: false})
     
+    const onClickCalendar = (value) => {
+      if(String(value._d) === String(clickPopOver.value._d)) {
+        setClickPopOver({value: value, click: !clickPopOver.click})
+      } else {
+        setClickPopOver({value: value, click: true})
+      }
+    }
+
     return (
       <div className='container'>
         <span>COHO</span>
-          <Calendar className="calendar" dateCellRender={(value) => dateCellRender(value, clickPopOver)} monthCellRender={monthCellRender} onSelect={(m) => {setClickPopOver({value: m, click: !clickPopOver.click})}}/>
+          <Calendar className="calendar" dateCellRender={(value) => dateCellRender(value, clickPopOver)} monthCellRender={monthCellRender} onSelect={(value) => onClickCalendar(value)}/>
       </div>
     )
 }
