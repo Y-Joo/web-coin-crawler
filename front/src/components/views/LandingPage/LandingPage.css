@@ -18,3 +18,7 @@
   .notes-month section {
     font-size: 28px;
   }
+.container {
+  margin: 1rem;
+  text-align: center;
+}

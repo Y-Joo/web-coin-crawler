@@ -1,5 +1,5 @@
-import React from 'react';
-import { Calendar, Badge } from 'antd';
+import React, { useState } from 'react';
+import { Calendar, Badge, Popover } from 'antd';
 import './LandingPage.css'
 
 function getListData(value) {
@@ -33,16 +33,33 @@ function getListData(value) {
   return listData || [];
 }
 
-function dateCellRender(value) {
+function dateCellRender(value, clickPopOver) {
   const listData = getListData(value);
+  let click = false;
+  console.log(value);
+  if (Object.keys(clickPopOver.value).length !== 0 && clickPopOver.click) {
+    if(value._d.getDate() === clickPopOver.value._d.getDate()) {
+      if(value._d.getMonth() === clickPopOver.value._d.getMonth()){
+        click = true;
+      }
+    } 
+  }
+  
   return (
-    <ul className="events">
-      {listData.map(item => (
-        <li key={item.content}>
-          <span>10</span>
-        </li>
-      ))}
-    </ul>
+    <div>
+
+<Popover content={content} trigger='click' visible={click}>
+      </Popover>
+      <ul className="events">
+        {listData.map(item => (
+          <li key={item.content}>
+            <span style={{fontSize: '0.6rem'}}>SIAC</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+     
+    
   );
 }
 
@@ -62,10 +79,31 @@ function monthCellRender(value) {
   ) : null;
 }
 
-function LandingPage() {
-    return (
-      <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} />
+const content = (
+  <div>
+    <p>Contentddddddddddddddddddddddddddd</p>
+    <a href="https://www.youtube.com/">Contentdddddddddddddddddddddddddd</a>
+  </div>
+);
 
+const showPopOver = (date) => {
+  console.log(date);
+
+  return (
+    <Popover content={content}>
+    </Popover>
+  )
+}
+
+function LandingPage() {
+
+    const [clickPopOver, setClickPopOver] = useState({value: { }, click: false})
+    
+    return (
+      <div className='container'>
+        <span>COHO</span>
+          <Calendar className="calendar" dateCellRender={(value) => dateCellRender(value, clickPopOver)} monthCellRender={monthCellRender} onSelect={(m) => {setClickPopOver({value: m, click: !clickPopOver.click})}}/>
+      </div>
     )
 }
 
