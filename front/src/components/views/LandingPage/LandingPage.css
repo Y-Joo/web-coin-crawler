@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    text-align: right;
+    text-align: left;
   }
   .events .ant-badge-status {
     width: 100%;
@@ -22,3 +22,18 @@
   margin: 1rem;
   text-align: center;
 }
+
+.modal {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.modal-content { 
+  color: black;
+}
+
+.modal-content:hover {
+  color: deepskyblue;
+  font-weight: bold;
+  }
