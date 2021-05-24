@@ -7,5 +7,3 @@ class CoinData(models.Model):
     def __str__(self):
        return self.title
        
-def printt():
-    print("hello world!")
