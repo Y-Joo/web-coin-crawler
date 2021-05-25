@@ -1,16 +1,17 @@
 import React, { Suspense } from 'react';
 import { Route, Switch } from "react-router-dom";
-
+import { Layout } from 'antd';
 import LandingPage from "./views/LandingPage/LandingPage";
+
+const { Header, Footer, Sider, Content } = Layout;
 
 function App() {
   return (
     <Suspense fallback={(<div>Loading...</div>)}>
-      <div style={{ minHeight: 'calc(100vh - 80px)' }}>
         <Switch>
           <Route exact path="/" component={LandingPage} />
         </Switch>
-      </div>
+        <Footer style={{backgroundColor: 'white'}}></Footer>
     </Suspense>
   );
 }

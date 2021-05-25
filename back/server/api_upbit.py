@@ -22,6 +22,6 @@ def do_crawl():
         # print(coin_symbol)
         result[coin_symbol] = coin_korean
         # result.append({ 'coinKorean': coin_korean, 'coinSymbol': coin_symbol })
-    print(result)
+    print("upbit do_crawl 완료")
     
     return result

@@ -106,31 +106,31 @@ function LandingPage() {
       // 모달이 처음 띄워지는 경우
       else {
           let listData = [];
-          for (var key in coinData[selectedKey]) {
-            if (key in coinNameData[selectedExchange]) {
+          for (var key in coinData[selectedKey]) 
+            if (key in coinNameData[selectedExchange]) 
               listData.push({coinSymbol: key, coinKoreanName: coinNameData[selectedExchange][key]});
-            }
-          }
-          return (
-            <Modal 
-                title={selectedKey}
-                visible={isModalVisible} 
-                onOk={handleOk}
-                onCancel={handleCancel}
-                footer={[
-                <Button key="submit" type="primary" onClick={handleOk}>
-                  OK
-                </Button>,
-                ]}>
-              <ul className="modal" style={{overflow: 'auto', maxHeight: '10rem'}}>
-                {listData.map(item => (
-                  <li key={uuidv4()} style={{marginBottom: '0.2rem'}}>
-                    <a className="modal-content" onClick={() => {setSelectedDetailKey(item.coinSymbol); setIsModalDetailVisible(true);}}>{item.coinKoreanName +  ' (' + item.coinSymbol + ')'}</a>
-                  </li>
-                ))}
-              </ul>
-            </Modal>
-          )
+          
+          if (listData.length != 0)
+            return (
+              <Modal 
+                  title={selectedKey}
+                  visible={isModalVisible} 
+                  onOk={handleOk}
+                  onCancel={handleCancel}
+                  footer={[
+                  <Button key="submit" type="primary" onClick={handleOk}>
+                    OK
+                  </Button>,
+                  ]}>
+                <ul className="modal" style={{overflow: 'auto', maxHeight: '10rem'}}>
+                  {listData.map(item => (
+                    <li key={uuidv4()} style={{marginBottom: '0.2rem'}}>
+                      <a className="modal-content" onClick={() => {setSelectedDetailKey(item.coinSymbol); setIsModalDetailVisible(true);}}>{item.coinKoreanName +  ' (' + item.coinSymbol + ')'}</a>
+                    </li>
+                  ))}
+                </ul>
+              </Modal>
+            )
       }
     }
 
@@ -161,7 +161,7 @@ function LandingPage() {
     return (
       <div className='container'>
         {modal()}
-        <span>COHO</span>
+        <span style={{ fontSize: '1.2rem' }}>COHO</span>
           <Calendar 
             className="calendar" 
             dateCellRender={(value) => dateCellRender(value)} 
@@ -213,6 +213,8 @@ function LandingPage() {
                         onChange={handleOptionChange}>
                         <Option value="upbit">Upbit</Option>
                         <Option value="bitsum">Bitsum</Option>
+                        <Option value="coinone">Coinone</Option>
+                        <Option value="coinbit">Coinbit</Option>
                       </Select>
                     </Col>
                   </Row>
@@ -222,8 +224,6 @@ function LandingPage() {
             />
       </div>
     )
-    
-    
 }
 
 export default LandingPage
