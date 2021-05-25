@@ -5,6 +5,7 @@ import sys
 import django
 import crawl_coinmarketcal as coinmarketcal
 import crawl_bitsum as bitsum
+import api_upbit as upbit
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'server.settings')
 django.setup()
@@ -22,19 +23,23 @@ def preprocessingDict(dic: dict):
 
 
 def crontab():
-    # result = dict()
+    result = dict()
 
-    # urls = coinmarketcal.get_urls()
-    # for url in urls:
-    #     coinmarketcal.do_crawl(url, result)
+    urls = coinmarketcal.get_urls()
+    for url in urls:
+        coinmarketcal.do_crawl(url, result)
     
-    result_coin_name = []
-    result_bitsum = bitsum.do_crawl()
-    result_coin_name.append({'bitsum': result_bitsum})
-    
+    result_coin_name = {}
+
+    result_coin_name['bitsum'] = bitsum.do_crawl()
+    result_coin_name['upbit'] = upbit.do_crawl()
+
+    # print(json.dumps(result_coin_name, indent=4))
+
+    CoinData.objects.filter(title="COIN_NAME").delete()
     CoinData(title="COIN_NAME", content=json.dumps(result_coin_name)).save()
 
-    # CoinData.objects.filter(title="COIN_DATA").delete()
-    # CoinData(title="COIN_DATA", content=json.dumps(preprocessingDict(result.copy()))).save()
+    CoinData.objects.filter(title="COIN_DATA").delete()
+    CoinData(title="COIN_DATA", content=json.dumps(preprocessingDict(result.copy()))).save()
 
 crontab()

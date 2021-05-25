@@ -14,13 +14,14 @@ def do_crawl():
     # 정보 -> 이름, 호재 시간, 추가된 시간, 제목, 상세내용
     crawl_data = soup.select("span[class = 'coinSymbol sort_coin']")
 
-    result = []
+    result = { }
     for item in crawl_data:
         coin_data = str(item)
         # print(coin_data)
         coin_korean = coin_data[coin_data.find('data-sorting=') + 14 : coin_data.find('>') - 1]
         coin_symbol = coin_data[coin_data.find('">') + 2 : coin_data.find('/')]
-        print(coin_symbol)
-        result.append({ 'coinKorean': coin_korean, 'coinSymbol': coin_symbol })
+        result[coin_symbol] = coin_korean
+    print(result)
     
     return result
+do_crawl()

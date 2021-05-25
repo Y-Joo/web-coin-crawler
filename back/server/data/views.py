@@ -10,4 +10,8 @@ from django.views.generic import View
 
 class CreateDataView(generics.ListCreateAPIView):
     serializer_class = DataSerializer
-    queryset = CoinData.objects
+    queryset = CoinData.objects.filter(title="COIN_DATA")
+
+class CreateNameView(generics.ListCreateAPIView):
+    serializer_class = DataSerializer
+    queryset = CoinData.objects.filter(title="COIN_NAME")

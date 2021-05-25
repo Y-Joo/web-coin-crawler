@@ -18,7 +18,8 @@ function LandingPage() {
     const [selectedKey, setSelectedKey] = useState("");
     const [isModalDetailVisible, setIsModalDetailVisible] = useState(false);
     const [selectedDetailKey, setSelectedDetailKey] = useState("");
-    const [upbitCoin, setUpbitCoin] = useState([]);
+    const [coinNameData, setCoinNameData] = useState({});
+    const [selectedExchange, setSelectedExchange] = useState("upbit");
 
     useEffect(() => {
       axios.get('/api/getCoinData')
@@ -28,9 +29,10 @@ function LandingPage() {
         .catch((err) => {
           console.log(err);
         });
-      axios.get('https://api.upbit.com/v1/market/all?isDetails=false', {method: 'GET', headers: {Accept: 'application/json'}})
+      axios.get('/api/getCoinName')
         .then((response) => {
-          setUpbitCoin(response.data);
+          setCoinNameData(JSON.parse(response.data[0].content))
+          console.log(JSON.parse(response.data[0].content))
         })
         .catch((err) => {
           console.log(err);
@@ -38,17 +40,13 @@ function LandingPage() {
     }, [])
 
     function dateCellRender(value) {
-      let tmpKey = value.year() + '-' + String(Number(value.month())+1) + '-' + value.date();
+      let tmpKey = value.year() + '/' + String(Number(value.month())+1) + '/' + value.date();
       // console.log(coinData[tmpKey]);
       //console.log(upbitCoin);
       let listData = [];
       for (var key in coinData[tmpKey]) {
-        for (var indx in upbitCoin) {
-          if (upbitCoin[indx].market.split('-')[1] == key) {
-            listData.push({coinSymbol: key, coinKoreanName: upbitCoin[indx].korean_name});
-            //console.log(upbitCoin[indx].market.split('-')[1], key);
-            break;
-          }
+        if (key in coinNameData[selectedExchange]) {
+          listData.push({coinSymbol: key, coinKoreanName: coinNameData[selectedExchange][key]});
         }
       }
 
@@ -63,35 +61,15 @@ function LandingPage() {
       );
     }
 
-    const onClickCalendar = (value) => {
-      setSelectedKey(value.year() + '-' + String(Number(value.month())+1) + '-' + value.date());
-      showModal();
+    const checkNameFromExchange = (exchange) => {
+
     }
 
-    const showModal = () => {
-      setIsModalVisible(true);
-    };
-    
-    const handleOk = () => {
-      setIsModalVisible(false);
-      setIsModalDetailVisible(false);
-    };
-    
-    const handleCancel = () => {
-      setIsModalVisible(false);
-      setIsModalDetailVisible(false);
-    };
-    
     const modal = () => {
       // console.log(coinData);
+
+      // 모달이 이미 띄워져있는 경우
       if (isModalDetailVisible) {
-        let coinKoreanName = "";
-        for (var indx in upbitCoin) {
-          if (upbitCoin[indx].market.split('-')[1] == selectedDetailKey) {
-            coinKoreanName = upbitCoin[indx].korean_name;
-            break;
-          }
-        }
         let listData = [];
           for (var keyDate in coinData) {
             if (selectedDetailKey in coinData[keyDate]) {
@@ -106,7 +84,7 @@ function LandingPage() {
 
         return (
           <Modal 
-              title={ coinKoreanName + " " + listData[0]['fullName'] + ' (' + selectedDetailKey + ')' }
+              title={ coinNameData[selectedExchange][selectedDetailKey] + " " + listData[0]['fullName'] + ' (' + selectedDetailKey + ')' }
               visible={isModalVisible} 
               onOk={handleOk}
               onCancel={handleCancel}
@@ -124,15 +102,13 @@ function LandingPage() {
             </ul>
           </Modal>
         )
-      } else {
+      } 
+      // 모달이 처음 띄워지는 경우
+      else {
           let listData = [];
           for (var key in coinData[selectedKey]) {
-            for (var indx in upbitCoin) {
-              if (upbitCoin[indx].market.split('-')[1] == key) {
-                listData.push({coinSymbol: key, coinKoreanName: upbitCoin[indx].korean_name});
-                //console.log(upbitCoin[indx].market.split('-')[1], key);
-                break;
-              }
+            if (key in coinNameData[selectedExchange]) {
+              listData.push({coinSymbol: key, coinKoreanName: coinNameData[selectedExchange][key]});
             }
           }
           return (
@@ -158,7 +134,30 @@ function LandingPage() {
       }
     }
 
+    const onClickCalendar = (value) => {
+      setSelectedKey(value.year() + '/' + String(Number(value.month())+1) + '/' + value.date());
+      showModal();
+    }
+
+    const showModal = () => {
+      setIsModalVisible(true);
+    };
     
+    const handleOk = () => {
+      setIsModalVisible(false);
+      setIsModalDetailVisible(false);
+    };
+    
+    const handleCancel = () => {
+      setIsModalVisible(false);
+      setIsModalDetailVisible(false);
+    };
+    
+    const handleOptionChange = (value) => {
+      setSelectedExchange(value)
+      console.log(value)
+    }
+
     return (
       <div className='container'>
         {modal()}
@@ -210,11 +209,12 @@ function LandingPage() {
                       <Select
                         size="small"
                         dropdownMatchSelectWidth={false}
-                        value={"Upbit"}>
-                        <Option value="jack">Jack</Option>
-                        <Option value="lucy">Lucy</Option>
+                        defaultValue="upbit"
+                        onChange={handleOptionChange}>
+                        <Option value="upbit">Upbit</Option>
+                        <Option value="bitsum">Bitsum</Option>
                       </Select>
-                  </Col>
+                    </Col>
                   </Row>
                 </div>
               );
