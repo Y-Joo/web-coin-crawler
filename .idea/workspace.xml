@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="badc795a-27b1-4307-ab42-4e1dc3bcbb0c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/web-coin-crawler.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/web-coin-crawler.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/server/cron.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/server/cron.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/server/server/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/server/server/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/server/server/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/server/server/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +35,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622014970003</updated>
-      <workItem from="1622014975186" duration="667000" />
+      <workItem from="1622014975186" duration="1305000" />
     </task>
     <servers />
   </component>
