@@ -1,0 +1,39 @@
+.events {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+  }
+  .events .ant-badge-status {
+    width: 100%;
+    overflow: hidden;
+    font-size: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .notes-month {
+    font-size: 28px;
+    text-align: center;
+  }
+  .notes-month section {
+    font-size: 28px;
+  }
+.container {
+  margin: 1rem;
+  text-align: center;
+}
+
+.modal {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.modal-content { 
+  color: black;
+}
+
+.modal-content:hover {
+  color: deepskyblue;
+  font-weight: bold;
+  }
