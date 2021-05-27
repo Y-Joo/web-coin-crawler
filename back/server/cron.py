@@ -47,4 +47,5 @@ def crontab():
     CoinData.objects.filter(title="COIN_DATA").delete()
     CoinData(title="COIN_DATA", content=json.dumps(preprocessingDict(result.copy()))).save()
 
+
 crontab()
