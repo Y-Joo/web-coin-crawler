@@ -27,9 +27,9 @@ def preprocessingDict(dic: dict):
 def crontab():
     result = dict()
 
-    # urls = coinmarketcal.get_urls()
-    # for url in urls:
-    #     coinmarketcal.do_crawl(url, result)
+    urls = coinmarketcal.get_urls()
+    for url in urls:
+        coinmarketcal.do_crawl(url, result)
 
     with open('tmp.json', 'w', encoding='utf-8') as make_file:
         json.dump(result.copy(), make_file, indent="\t")
@@ -44,11 +44,11 @@ def crontab():
     result_coin_name['coinone'] = coinone.read_json()
     result_coin_name['coinbit'] = coinbit.read_json()
 
-    # CoinData.objects.filter(title="COIN_NAME").delete()
-    # CoinData(title="COIN_NAME", content=json.dumps(result_coin_name)).save()
-    #
-    # CoinData.objects.filter(title="COIN_DATA").delete()
-    # CoinData(title="COIN_DATA", content=json.dumps(preprocessingDict(result.copy()))).save()
+    CoinData.objects.filter(title="COIN_NAME").delete()
+    CoinData(title="COIN_NAME", content=json.dumps(result_coin_name)).save()
+
+    CoinData.objects.filter(title="COIN_DATA").delete()
+    CoinData(title="COIN_DATA", content=json.dumps(preprocessingDict(result.copy()))).save()
 
 
 crontab()
