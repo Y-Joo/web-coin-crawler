@@ -31,21 +31,21 @@ def crontab():
     for url in urls:
         coinmarketcal.do_crawl(url, result)
 
-    with open('tmp.json', 'w', encoding='utf-8') as make_file:
-        json.dump(result.copy(), make_file, indent="\t")
-
-    result_coin_name = {}
-
-    # 실시간으로 크롤링
-    result_coin_name['bitsum'] = bitsum.do_crawl()
-    result_coin_name['upbit'] = upbit.do_crawl()
-
-    # 미리 돌려놓은 크롤링 json 파일 읽기
-    result_coin_name['coinone'] = coinone.read_json()
-    result_coin_name['coinbit'] = coinbit.read_json()
-
-    CoinData.objects.filter(title="COIN_NAME").delete()
-    CoinData(title="COIN_NAME", content=json.dumps(result_coin_name)).save()
+    # with open('tmp.json', 'w', encoding='utf-8') as make_file:
+    #     json.dump(result.copy(), make_file, indent="\t")
+    #
+    # result_coin_name = {}
+    #
+    # # 실시간으로 크롤링
+    # result_coin_name['bitsum'] = bitsum.do_crawl()
+    # result_coin_name['upbit'] = upbit.do_crawl()
+    #
+    # # 미리 돌려놓은 크롤링 json 파일 읽기
+    # result_coin_name['coinone'] = coinone.read_json()
+    # result_coin_name['coinbit'] = coinbit.read_json()
+    #
+    # CoinData.objects.filter(title="COIN_NAME").delete()
+    # CoinData(title="COIN_NAME", content=json.dumps(result_coin_name)).save()
 
     CoinData.objects.filter(title="COIN_DATA").delete()
     CoinData(title="COIN_DATA", content=json.dumps(preprocessingDict(result.copy()))).save()
