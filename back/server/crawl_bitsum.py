@@ -21,6 +21,5 @@ def do_crawl():
         coin_korean = coin_data[coin_data.find('data-sorting=') + 14 : coin_data.find('>') - 1]
         coin_symbol = coin_data[coin_data.find('">') + 2 : coin_data.find('/')]
         result[coin_symbol] = coin_korean
-    print("bitsum do_crawl 완료")
     
     return result

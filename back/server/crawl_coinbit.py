@@ -33,7 +33,6 @@ def do_crawl():
 def read_json():
     with open('coinbit.json', 'r') as f:
         json_data = json.load(f)
-        print("coinbit read_json 완료")
         return json_data
 
 # do_crawl()

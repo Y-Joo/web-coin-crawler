@@ -30,7 +30,10 @@ def crontab():
     urls = coinmarketcal.get_urls()
     for url in urls:
         coinmarketcal.do_crawl(url, result)
-    
+
+    with open('tmp.json', 'w', encoding='utf-8') as make_file:
+        json.dump(preprocessingDict(result.copy()), make_file, indent="\t")
+
     result_coin_name = {}
 
     # 실시간으로 크롤링

@@ -28,7 +28,6 @@ def do_crawl():
 def read_json():
     with open('coinone.json', 'r') as f:
         json_data = json.load(f)
-        print("coinone read_json 완료")
         return json_data
 # do_crawl()
 # read_json()
